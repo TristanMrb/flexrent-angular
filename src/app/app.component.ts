@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'flexrent';
+
+  public currentUser: any;
+
+  public constructor() {
+    this.currentUser = 1;
+  }
+
 }
