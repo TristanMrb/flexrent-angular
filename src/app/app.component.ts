@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { User } from './_data_objects/data_objects';
+import { AuthenticationService } from './_services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +10,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'flexrent';
 
-  public currentUser: any;
+  public currentUser: User;
 
-  public constructor() {
-    this.currentUser = 1;
+  public constructor(private authenticationService: AuthenticationService,) {
+    this.authenticationService.currentUser.subscribe(user => this.currentUser = user);
   }
+
+
 
 }

@@ -4,19 +4,29 @@ import { AccountComponent } from './account/account.component';
 
 // Import components
 import { DiscoveryComponent } from './discovery/discovery.component';
+import { LoginComponent } from './login/login.component';
+import { AuthenticationGuard } from './_guards/authentication.guard';
 
 const routes: Routes = [
   {
+    path: 'login',
+    canActivate: [AuthenticationGuard],
+    component: LoginComponent
+  },
+  {
     path: 'discovery',
+    canActivate: [AuthenticationGuard],
     component: DiscoveryComponent,
   },
   {
     path: 'account',
+    canActivate: [AuthenticationGuard],
     component: AccountComponent,
   },
   {
     path: '',
-    component: DiscoveryComponent,
+    canActivate: [AuthenticationGuard],
+    component: LoginComponent,
   },
   {
     path: '**',
